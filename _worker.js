@@ -1645,7 +1645,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
                             </div>
                         </td>
 						<td>
-                            <button onclick="openQR('https://${hostName}/sub/${userID}#BPB-Normal', 'Normal Subscription')" style="margin-bottom: 8px;">
+                            <button onclick="openQR('https://${hostName}/sub/${userID}#BPB-Normal', '正常订阅')" style="margin-bottom: 8px;">
                                 二维码&nbsp;<span class="material-symbols-outlined">qr_code</span>
                             </button>
                             <button onclick="copyToClipboard('https://${hostName}/sub/${userID}#BPB-Normal', false)">
@@ -1678,7 +1678,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
                             </div>
                         </td>
                         <td>
-                            <button onclick="openQR('sing-box://import-remote-profile?url=https://${hostName}/sub/${userID}?app=sfa#BPB-Normal', 'Normal Subscription')" style="margin-bottom: 8px;">
+                            <button onclick="openQR('sing-box://import-remote-profile?url=https://${hostName}/sub/${userID}?app=sfa#BPB-Normal', '正常订阅')" style="margin-bottom: 8px;">
                                 二维码&nbsp;<span class="material-symbols-outlined">qr_code</span>
                             </button>
                             <button onclick="copyToClipboard('https://${hostName}/sub/${userID}?app=sfa#BPB-Normal', false)">
@@ -2087,7 +2087,7 @@ const renderLoginPage = async () => {
         <div class="container">
             <h1>神奇面板  <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
             <div class="form-container">
-                <h2>User Login</h2>
+                <h2>管理员登录</h2>
                 <form id="loginForm">
                     <div class="form-control">
                         <label for="password">输入管理员密码</label>
