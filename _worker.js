@@ -1589,7 +1589,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
                         <label for="bypass-iran">直连伊朗</label>
 					</div>
 				</div>
-                <h2>CLEAN IP ⚙️</h2>
+                <h2>代理IP ⚙️</h2>
 				<div class="form-control">
 					<label for="cleanIPs">✨ 代理IP</label>
 					<input type="text" id="cleanIPs" name="cleanIPs" value="${cleanIPs.replaceAll(",", " , ")}">
