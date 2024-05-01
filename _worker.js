@@ -71,7 +71,7 @@ export default {
 
                         return new Response(`${JSON.stringify(fragConfigs, null, 4)}`, { status: 200 });
 
-                    case '/panel':
+                    case '/admin':
 
                         if (typeof env.bpb !== 'object') {
                             const errorPage = renderErrorPage('KV Dataset is not properly set!', null, true);
@@ -115,7 +115,7 @@ export default {
                         }
 
                         let loginAuth = await Authenticate(request, env);
-                        if (loginAuth) return Response.redirect(`${url.origin}/panel`, 302);
+                        if (loginAuth) return Response.redirect(`${url.origin}/admin`, 302);
 
                         let secretKey = await env.bpb.get('secretKey');
                         const pwd = await env.bpb.get('pwd');
@@ -171,7 +171,7 @@ export default {
                             }
                         });        
 
-                    case '/panel/password':
+                    case '/admin/password':
 
                         let passAuth = await Authenticate(request, env);
                         if (!passAuth) return new Response('Unauthorized!', { status: 401 });           
@@ -1542,7 +1542,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
 	</head>
 	
 	<body>
-		<h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+		<h1>神奇面板 <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
 		<div class="form-container">
             <h2>节点设置 ⚙️</h2>
 			<form id="configForm">
@@ -1911,7 +1911,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
                 const applyButtonVal = applyButton.value;
                 applyButton.value = '⌛ Loading...';
 
-                const response = await fetch('/panel', {
+                const response = await fetch('/admin', {
                     method: 'POST',
                     body: formData,
                     credentials: 'include'
@@ -1977,7 +1977,7 @@ const renderHomePage = async (env, hostName, fragConfigs) => {
             }
                     
             try {
-                const response = await fetch('/panel/password', {
+                const response = await fetch('/admin/password', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'text/plain'
@@ -2021,7 +2021,7 @@ const renderLoginPage = async () => {
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>管理员登录title>
     <style>
 
         html, body { height: 100%; margin: 0; }
@@ -2085,16 +2085,16 @@ const renderLoginPage = async () => {
     </head>
     <body>
         <div class="container">
-            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+            <h1>神奇面板  <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
             <div class="form-container">
                 <h2>User Login</h2>
                 <form id="loginForm">
                     <div class="form-control">
-                        <label for="password">Password</label>
+                        <label for="password">输入管理员密码</label>
                         <input type="password" id="password" name="password" required>
                     </div>
                     <div id="passwordError" style="color: red; margin-bottom: 10px;"></div>
-                    <button type="submit" class="button">Login</button>
+                    <button type="submit" class="button">登录</button>
                 </form>
             </div>
         </div>
@@ -2113,7 +2113,7 @@ const renderLoginPage = async () => {
                 });
             
                 if (response.ok) {
-                    window.location.href = '/panel';
+                    window.location.href = '/admin';
                 } else {
                     passwordError.textContent = '⚠️ Wrong Password!';
                     const errorMessage = await response.text();
@@ -2156,7 +2156,7 @@ const renderErrorPage = (message, error, refer) => {
 
     <body>
         <div id="error-container">
-            <h1>BPB Panel <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
+            <h1>神奇面板 <span style="font-size: smaller;">${panelVersion}</span> 💦</h1>
             <div id="error-message">
                 <h2>${message} ${refer 
                     ? 'Please try again or refer to <a href="https://github.com/bia-pain-bache/BPB-Worker-Panel/blob/main/README.md">documents</a>' 
